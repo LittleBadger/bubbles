@@ -1,0 +1,53 @@
+#version 430
+
+out vec4 col;
+
+uniform float t;
+uniform vec2 p[10];
+uniform float r[10];
+uniform float vamp[10];
+uniform int num_bubbles;
+
+vec3 randVec(int);
+
+void main()	{
+	float eps = .001f;
+	
+	vec2 pos = gl_FragCoord.xy;
+
+	float pwf = 0;
+	float minpwf1 = 0;
+	float minpwf2 = 0;
+	int minbubble = -1;
+	
+	for (int i = 0; i < num_bubbles; i++) {
+		vec2 d = pos-p[i] + vamp[i]*vec2(sin(dot(pos,vec2(.04,.05))+20*t),sin(dot(pos,vec2(.02,.03))+15*t));
+		
+		/*
+		if ( dot(d,d) < 5 ) {
+			col = vec4(0,0,0,1.0);
+			return;
+		}*/
+		
+		pwf = (dot(d,d))/r[i]-r[i];
+		if ( pwf < minpwf1 ) {
+			minpwf2 = minpwf1;
+			minpwf1 = pwf;
+			minbubble = i;
+		} else if (pwf < minpwf2) {
+			minpwf2 = pwf;
+		}
+	}
+	col = vec4(0.2f,0.8f,1.0f,1.0f);
+	
+	if ( minpwf1 < 0 ) {
+		float cit = exp(-.3*(minpwf2 - minpwf1));
+		col += vec4(cit,cit,cit,0.0);
+	}
+}
+
+vec3 randVec(int seed) {
+	return vec3( .5 + .5*sin(seed*394324839 + seed*seed*23423902),
+				.5 + .5*sin(seed*22323424 + seed*seed*1234123902),
+				.5 + .5*sin(seed*1233943 + seed*seed*70592843) );
+}
