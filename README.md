@@ -10,7 +10,7 @@ For example, a solitary bubble's radius is inversely proportional to it's pressu
 
 A bubble cluster satisfying these laws can be drawn as a Voronoi/power diagram, with the function f_i(p) = 1/ri d(p,ci) - ri, where p is a point in the plane, and d(p,ci) is the distance from p to the center of bubble. In other words, a point p is inside bubble i if f_i(p) < 0 and f_i(p) < f_j(p) for all other bubbles j; if f_i(p) = f_j(p) then p is on the wall ij between bubble i and j.
 
-So a very simple cartoon simulation is as follows: put a force with the correct rest distance between every pair of bubbles in contact, and when the bubbles collide increase the radius a bit to conserve volume of the bubble. Then draw the Voronoi diagram, per pixel with the fragment shader, and simultaneously compute the adjacency matrix of bubbles in contact: if a pixel finds himself on the bubble wall ij then he writes 1 to that pixel in an image using image load/store.
+So a very simple cartoon simulation is as follows: put a force with the correct rest distance between every pair of bubbles in contact, and when the bubbles collide increase the radius a bit to conserve volume of the bubble. Then draw the Voronoi diagram, per pixel with the fragment shader, and simultaneously compute the adjacency matrix of bubbles in contact: if a pixel is on the bubble wall ij, then store that in the (i,j) pixel of a texture, using the image load/store.
 
 Thanks to my friends at TU, especially Niklas and Jan, for enthusiastically allowing me to waste an afternoon with this.
 
