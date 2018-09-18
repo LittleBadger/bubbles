@@ -1,6 +1,6 @@
 # bubbles
 
-See here for the webgl demo.
+See [here](https://littlebadger.github.io/bblwebgl.html) for the webgl demo.
 
 Two dimensional bubbles satisfy a 2D version of Plateau's laws:
  * Every bubble wall is an arc of a circle with (signed) radius inversely proportional to the difference of pressures on either side. 
