@@ -12,6 +12,5 @@ A bubble cluster satisfying these laws can be drawn as a Voronoi/power diagram, 
 
 For the animation, use a Lennard-Jones type force between every pair of bubbles in contact to force bubbles to have the correct seperation distance. When bubbles collide increase the radius a little bit to approximately conserve volume of bubbles (exact conservation looked unrealistic). Then draw the Voronoi diagram per pixel with the fragment shader, and simultaneously compute the adjacency matrix of bubbles in contact: if a pixel is on the bubble wall ij, then store that in the (i,j) pixel of a texture using the image load/store. Some day, I will add the ability for bubbles to pop or coalesce. 
 
-Thanks to my friends at TU, especially Niklas, Albert, and Jan, for enthusiastically indulging me.
-
+Thanks to my friends at TU, especially Niklas, Albert, and Jan, for enthusiastic discussions.
 
