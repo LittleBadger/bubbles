@@ -2,7 +2,7 @@
 
 See [here](https://littlebadger.github.io/bblwebgl.html) for the webgl demo.
 
-PLanar soap bubbles satisfy a 2D version of Plateau's laws:
+Planar soap bubbles satisfy a 2D version of Plateau's laws:
  * Every bubble wall is an arc of a circle with (signed) radius inversely proportional to the difference of pressures on either side. 
  * Bubble walls meet at junctions of three, with a 120 degree angle between each pair of walls.
 
